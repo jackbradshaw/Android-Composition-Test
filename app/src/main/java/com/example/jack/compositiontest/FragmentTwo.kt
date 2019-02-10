@@ -1,8 +1,6 @@
 package com.example.jack.compositiontest
 
-import com.example.jack.compositiontest.controls.ContentBuilder
-import com.example.jack.compositiontest.controls.Navigating
-import com.example.jack.compositiontest.controls.PrimaryButtonBuilder
+import com.example.jack.compositiontest.controls.*
 import com.example.jack.compositiontest.decorators.AsScreen
 
 class FragmentTwo : DelegatingFragment() {
@@ -13,9 +11,12 @@ class FragmentTwo : DelegatingFragment() {
             }
         )
         .withComponents(
-            Navigating(this, PrimaryButtonBuilder()).apply {
+            NavigateAction(this, PrimaryButtonBuilder()).apply {
                 textRes = R.string.click_me
                 actionId = 1
+            },
+            PopsBackStack(this, SecondaryButtonBuilder()).apply {
+                textRes = R.string.no_click_me
             }
         )
 }
