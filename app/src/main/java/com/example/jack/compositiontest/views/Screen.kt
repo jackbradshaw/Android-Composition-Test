@@ -1,4 +1,4 @@
-package com.example.jack.compositiontest
+package com.example.jack.compositiontest.views
 
 import android.content.Context
 import android.util.AttributeSet

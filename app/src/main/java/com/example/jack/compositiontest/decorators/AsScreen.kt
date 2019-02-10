@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.jack.compositiontest.FragmentDelegate
-import com.example.jack.compositiontest.Screen
-import com.example.jack.compositiontest.controls.ComponentBuilder
+import com.example.jack.compositiontest.fragment.FragmentDelegate
+import com.example.jack.compositiontest.viewfactories.ViewFactory
+import com.example.jack.compositiontest.views.Screen
 
 class AsScreen(private val fragment: Fragment) : FragmentDelegate {
 
-    private var contentBuilder: ComponentBuilder? = null
-    private var componentBuilders: List<ComponentBuilder> = listOf()
+    private var contentBuilder: ViewFactory? = null
+    private var viewFactories: List<ViewFactory> = listOf()
     private lateinit var screen: Screen
 
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
@@ -22,24 +22,24 @@ class AsScreen(private val fragment: Fragment) : FragmentDelegate {
 
         if (contentBuilder != null) screen.addContent(build(contentBuilder!!))
 
-        for (control in componentBuilders) {
+        for (control in viewFactories) {
             screen.addControl(build(control))
         }
     }
 
-    private fun build(builder: ComponentBuilder) =
-        builder.build(
+    private fun build(builder: ViewFactory) =
+        builder.makeView(
             screen.context,
             fragment.viewLifecycleOwner
         )
 
-    fun withContent(componentBuilder: ComponentBuilder): AsScreen {
-        contentBuilder = componentBuilder
+    fun withContent(viewFactory: ViewFactory): AsScreen {
+        contentBuilder = viewFactory
         return this
     }
 
-    fun withComponents(vararg componentBuilders: ComponentBuilder): AsScreen {
-        this.componentBuilders = listOf(*componentBuilders)
+    fun withComponents(vararg viewFactories: ViewFactory): AsScreen {
+        this.viewFactories = listOf(*viewFactories)
         return this
     }
 }

@@ -1,4 +1,4 @@
-package com.example.jack.compositiontest
+package com.example.jack.compositiontest.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,4 +1,4 @@
-package com.example.jack.compositiontest.controls
+package com.example.jack.compositiontest.viewfactories
 
 import android.view.View
 
