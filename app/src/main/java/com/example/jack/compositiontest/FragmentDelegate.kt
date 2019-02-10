@@ -8,5 +8,5 @@ import android.view.ViewGroup
 interface FragmentDelegate {
     fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? = null
 
-    fun onActivityCreated(savedInstanceState: Bundle?) = {}
+    fun onActivityCreated(savedInstanceState: Bundle?) {}
 }

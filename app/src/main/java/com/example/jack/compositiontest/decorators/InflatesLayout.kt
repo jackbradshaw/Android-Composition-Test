@@ -1,4 +1,4 @@
-package com.example.jack.compositiontest.Decorators
+package com.example.jack.compositiontest.decorators
 
 import android.os.Bundle
 import android.view.LayoutInflater
